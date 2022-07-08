@@ -28,19 +28,30 @@ function updateCartTotal (){
     let cartContainer = document.getElementsByClassName('cart-items')[0]
     //will get all the cart rows in the container cartRows.length is 2
     let cartRows = cartContainer.getElementsByClassName('cart-row')
+    const stateTax = 0.08
+
+    let total = 0
     //Loop over the rows 
     for (let i = 0; i < cartRows.length; i++) {
         const cartRow = cartRows[i];//whichever row we are currently on
 
+        //the price and quanity in the first row or the row we're currently on? 
         let priceEl = cartRow.getElementsByClassName('cart-price')[0]
         let quantityEl = cartRow.getElementsByClassName('cart-quantity-input')[0]
         console.log(priceEl, quantityEl)
 
-        var price = parseFloat(priceEl.innerHTML.replace('$', ''))
-        console.log(price)
-        
-        
+        // replace = take off dollar sign & parseFloat = make string a number 
+        let price = parseFloat(priceEl.innerHTML.replace('$', ''))
+        let quanity = quantityEl.value // value is the number in the input field
+        console.log(price * quanity)
+        total = total + (price * quanity)
     }
+    document.getElementsByClassName('cart-total-price')[0].innerHTML = `$${total}`
+    let addTax = total * stateTax
+    document.getElementsByClassName('cart-total-price')[1].innerHTML = `$${addTax.toFixed(2)}`
+    let newTotal = total + addTax
+    document.getElementsByClassName('cart-total-price')[2].innerHTML = `$${newTotal.toFixed(2)}`
+    document.getElementsByClassName('cart-total-price')[3].innerHTML = `$${newTotal.toFixed(2)}`
 }
 
 // Loop All 
