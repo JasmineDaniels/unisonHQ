@@ -56,6 +56,14 @@ function quantityChanged(event){
 //     //updateCartTotal(btn)
 //   })
 // }
+
+//Purchase Button 
+let purchaseBtn = document.getElementsByClassName('btn-purchase')[0];
+purchaseBtn.addEventListener('click', () => {
+  console.log(`I was clicked`)
+  alert(`Thank you for your purchase`)
+})
+
     
 // So cartTotal is displayed on page load 
 function cartTotal(){

@@ -4,7 +4,7 @@ const port = 3000
 
 //ejs - embed serve-side code into front end HTML
 app.set('view engine', 'ejs')
-//Current public files are BVBSalesPage files 
+//Link server to public files - BVBSalesPage
 app.use(express.static('public'))
 //temp-host
 app.listen(port, function(){

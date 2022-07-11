@@ -81,6 +81,7 @@
                       <th scope="col">Format</th>
                       <th scope="col">Quantity</th>
                       <th scope="col">Price</th>
+                      <th scope="col">Remove</th>
                     </tr>
                   </thead>
                   <!-- Table Body -->
@@ -90,12 +91,6 @@
                   
                       <th scope="row">
                         <div class="d-flex align-items-center">
-                          <!-- Remove Button -->
-                          <!-- <div class="col-1">
-                            <button id="rm-btn1" class="btn btn-danger" type="button"> 
-                              <i class="fas fa-times"></i>
-                            </button>
-                          </div> -->
                           <img src="./imgs/IMG_2453.jpg" class="img-fluid rounded-3"
                             style="width: 120px;" alt="Course">
                           <div class="flex-column ms-4">
@@ -129,8 +124,9 @@
                       <td class="align-middle">
                         <p class="cart-price mb-0" style="font-weight: 500;">$144.19</p>
                       </td>
-                      <td class="align-center">
-                        <button id="rm-btn1" class="btn btn-danger" type="button"> 
+                      <!-- Remove Button -->
+                      <td class="align-middle">
+                        <button class="btn btn-danger" type="button"> 
                           <i class="fas fa-times"></i>
                         </button>
                       </td>
@@ -140,12 +136,6 @@
                     <tr class="cart-row">
                       <th scope="row" class="border-bottom-0">
                         <div class="d-flex align-items-center">
-                            <!-- Remove Button -->
-                            <!-- <div class="col-1">
-                              <button id="rm-btn2" class="btn btn-danger" type="button"> 
-                                <i class="fas fa-times"></i>
-                              </button>
-                            </div> -->
                           <img src="./imgs/IMG_2453.jpg" class="img-fluid rounded-3"
                             style="width: 120px;" alt="Bar Kit">
                           <div class="flex-column ms-4">
@@ -178,8 +168,9 @@
                       <td class="align-middle border-bottom-0">
                         <p class="cart-price mb-0" style="font-weight: 500;">$49.99</p>
                       </td>
-                      <td class="">
-                        <button id="rm-btn2" class="btn btn-danger" type="button"> 
+                      <!-- Remove Button -->
+                      <td class="align-middle">
+                        <button class="btn btn-danger" type="button"> 
                           <i class="fas fa-times"></i>
                         </button>
                       </td>
@@ -278,7 +269,7 @@
                         <p class="cart-total-price mb-2"></p>
                       </div>
       
-                      <button type="button" class="btn btn-primary btn-block btn-lg">
+                      <button type="button" class="btn-purchase btn btn-primary btn-block btn-lg">
                         <div class="d-flex justify-content-between">
                           <span>Checkout</span>
                           <span class="cart-total-price"></span>
