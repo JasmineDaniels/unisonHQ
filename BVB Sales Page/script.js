@@ -1,25 +1,94 @@
-console.log(`I am linked`)
-//let cartContainer = document.querySelector('.cart-items')
-//let cartRows = cartContainer.querySelectorAll('.cart-row')
-
-
-
-let rmItems = document.querySelectorAll('.btn-danger');
-for (const item of rmItems){
-    item.addEventListener('click', (event) => {
-        let btnClicked = event.target;
-        btnClicked.parentElement.parentElement.parentElement.parentElement.remove()
-        //btnClicked.remove(cartRow)
-        console.log(`clicked`)
-        updateCartTotal()
-    })
+function ready(fn) {
+    if (document.readyState !== 'loading'){
+      fn();
+    } else {
+      document.addEventListener('DOMContentLoaded', fn);
+    }
 }
 
-//let cartContainer = document.querySelector('tbody')
-//let priceRows = cartContainer.querySelectorAll('.price')
-//let quantityElement = cartContainer.querySelectorAll('input')
-//let priceEl = parseFloat(price.innerHTML.replace('$', ''))
-//let quantityEl = document.querySelectorAll('input').values
+ready(function () {
+  cartTotal()
+});
+
+//Remove Item Buttons
+let rmItemButtons = document.getElementsByClassName('btn-danger');
+for (let i = 0; i < rmItemButtons.length; i++) {
+    let button = rmItemButtons[i];
+    button.addEventListener('click', removeCartItem)
+}
+
+function removeCartItem(event){
+  let btnClicked = event.target;
+        //btnClicked.parentElement.parentElement.parentElement.parentElement.remove()
+        btnClicked.parentElement.parentElement.parentElement.remove()
+        console.log(`clicked`)
+        updateCartTotal()
+}
+
+//Quantity Buttons
+let quantityInputs = document.getElementsByClassName('cart-quantity-input');
+for (const input of quantityInputs){
+  input.addEventListener('change', quantityChanged)
+}
+
+function quantityChanged(event){
+  let input = event.target
+  // if input is not a number or less than  
+  if (isNaN(input.value) || input.value <= 0){
+    input.value = 1
+  }
+  updateCartTotal()
+}
+
+// Add/Minus Quantity Buttons
+// let quantityBtns = document.getElementsByClassName('cart-quantity-btn');
+// for (const btn of quantityBtns){
+//   btn.addEventListener('click', (event) => {
+//     //let btn = event.target;
+
+//     let quanity1 = document.getElementsByClassName('cart-quantity-input')[0].value
+//     let quanity2 = document.getElementsByClassName('cart-quantity-input')[1].value
+//     quanity1 = event.target;
+//     quanity2 = event.target;
+
+//     updateCartTotal(quanity1)
+//     updateCartTotal(quanity2)
+//     //updateCartTotal(btn)
+//   })
+// }
+    
+// So cartTotal is displayed on page load 
+function cartTotal(){
+    //[array of items]
+    let cartContainer = document.getElementsByClassName('cart-items')[0]
+    //will get all the cart rows in the container cartRows.length is 2
+    let cartRows = cartContainer.getElementsByClassName('cart-row')
+    const stateTax = 0.08
+    let total = 0
+    //the price and quanity of both rows
+    let barCoursePriceEl = cartRows[0].getElementsByClassName('cart-price')[0]
+    let barKitPriceEl = cartRows[1].getElementsByClassName('cart-price')[0]
+
+    let barCourseQuantity = parseInt(cartRows[0].getElementsByClassName('cart-quantity-input')[0].value)
+    let barKitQuantity = parseInt(cartRows[1].getElementsByClassName('cart-quantity-input')[0].value)
+
+    let barCoursePrice = parseFloat(barCoursePriceEl.innerHTML.replace('$', ''))
+    let barKitPrice = parseFloat(barKitPriceEl.innerHTML.replace('$', ''))
+    
+    let barCourseTotal = barCoursePrice * barCourseQuantity
+    let barKitTotal = barKitPrice * barKitQuantity
+    let barCombo = barKitTotal + barCourseTotal
+    //console.log(price * quanity)
+    total = total + (barCombo)
+    
+    document.getElementsByClassName('cart-total-price')[0].innerHTML = `$${total}`
+    let addTax = total * stateTax
+    document.getElementsByClassName('cart-total-price')[1].innerHTML = `$${addTax.toFixed(2)}`
+    let newTotal = total + addTax
+    document.getElementsByClassName('cart-total-price')[2].innerHTML = `$${newTotal.toFixed(2)}`
+    document.getElementsByClassName('cart-total-price')[3].innerHTML = `$${newTotal.toFixed(2)}`
+
+}
 
 
 
@@ -53,6 +122,17 @@ function updateCartTotal (){
     document.getElementsByClassName('cart-total-price')[2].innerHTML = `$${newTotal.toFixed(2)}`
     document.getElementsByClassName('cart-total-price')[3].innerHTML = `$${newTotal.toFixed(2)}`
 }
+
+// let rmItems = document.querySelectorAll('.btn-danger');
+// for (const item of rmItems){
+//     item.addEventListener('click', (event) => {
+//         let btnClicked = event.target;
+//         btnClicked.parentElement.parentElement.parentElement.parentElement.remove()
+//         //btnClicked.remove(cartRow)
+//         console.log(`clicked`)
+//         updateCartTotal()
+//     })
+// }
 
 // Loop All 
 // for (const row of cartRows){
