@@ -33,7 +33,7 @@ for (const input of quantityInputs){
 
 function quantityChanged(event){
   let input = event.target
-  // if input is not a number or less than  
+  // if input is not a number or less than 0, input value is 1 
   if (isNaN(input.value) || input.value <= 0){
     input.value = 1
   }
@@ -42,7 +42,7 @@ function quantityChanged(event){
 
 // Add/Minus Quantity Buttons
 // let quantityBtns = document.getElementsByClassName('cart-quantity-btn');
-// for (const btn of quantityBtns){
+// for (const btn of quantityBtns){ // for loop 
 //   btn.addEventListener('click', (event) => {
 //     //let btn = event.target;
 
@@ -115,7 +115,8 @@ function updateCartTotal (){
         console.log(price * quanity)
         total = total + (price * quanity)
     }
-    document.getElementsByClassName('cart-total-price')[0].innerHTML = `$${total}`
+    //total = Math.round(total*100) /100
+    document.getElementsByClassName('cart-total-price')[0].innerHTML = `$${total.toFixed(2)}`
     let addTax = total * stateTax
     document.getElementsByClassName('cart-total-price')[1].innerHTML = `$${addTax.toFixed(2)}`
     let newTotal = total + addTax
