@@ -1,0 +1,19 @@
+{
+    "course": [
+        {
+            "id": 1,
+            "name": "BVB Bar Course",
+            "price": 14419,
+            "imgName": "IMG_2453.jpg"
+            
+        }
+    ],
+    "kit": [
+        {
+            "id": 2,
+            "name": "BVB Bar Kit",
+            "price": 4999,
+            "imgName": "IMG_2453.jpg"
+        }
+    ]
+}

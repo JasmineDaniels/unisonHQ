@@ -145,8 +145,8 @@ function updateCartTotal (){
 
 // Loop All 
 // for (const row of cartRows){
-//     let priceEl = row.querySelectorAll('.cart-price')
-//     let quantityEl = row.querySelectorAll('.cart-quantity-input')
+//     let priceEl = row.querySelector('.cart-price')
+//     let quantityEl = row.querySelector('.cart-quantity-input')
 
 //     priceEl.forEach(price => {
 //         let priceNum = parseInt(price.innerText.replace('$', ''))
